@@ -7,3 +7,9 @@
 # Run   
 
     python diff.py
+
+# To compare using csv-dff library
+
+    pip install csv-diff
+
+    python csv-diff.py
