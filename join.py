@@ -1,6 +1,6 @@
 import pandas as pd
-salesforce = pd.read_csv('sample1.csv', encoding="windows-1251")
-boldreports = pd.read_csv('sample2.csv', encoding="windows-1251")
+salesforce = pd.read_csv('report-boldreports.csv', encoding="windows-1251")
+boldreports = pd.read_csv('report-salesforce.csv', encoding="windows-1251")
 # here we using inner join for getting common data from salesforce and boldreports csv
 inner_join = pd.merge(salesforce, boldreports, how='inner')
 # del inner_join[inner_join.columns.values[0]]
