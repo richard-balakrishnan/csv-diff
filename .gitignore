@@ -1,0 +1,2 @@
+compare/actual/**/*.csv
+__pycache__

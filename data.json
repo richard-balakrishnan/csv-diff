@@ -1,0 +1,32 @@
+[
+    {
+        "path": "\\compare\\expected\\CRR Opps Closed Won This Month\\2021\\jan\\salesforce_close_date_15.csv",
+        "param_name": "close date",
+        "param_value" : "01-01-2022",
+        "description": "report of data between 2021 jan to 2021 jun"
+    },
+    {
+        "path": "\\compare\\expected\\CRR Opps Closed Won This Month\\2021\\jan\\salesforce_close_date_30.csv",
+        "param_name": "close date",
+        "param_value" : "01-07-2022",
+        "description": "report of data between 2021 jul to 2021 dec"
+    },
+    {
+        "path": "\\compare\\expected\\CRR Opps Closed Won This Month\\2021\\jan\\salesforce_opportunity_owner.csv",
+        "param_name": "Opportunity Owner",
+        "param_value" : "Tara",
+        "description": "report of opportunity owner Tara"
+    },
+    {
+        "path": "\\compare\\expected\\CRR Opps Closed Won This Month\\2021\\jan\\salesforce_stage.csv",
+        "param_name": "Stage",
+        "param_value" : "Closed",
+        "description": "report for Stage"
+    },
+    {
+        "path": "\\compare\\expected\\CRR Opps Closed Won This Month\\2021\\jan\\salesforce_opportunity_status.csv",
+        "param_name": "Opportunity Status",
+        "param_value" : "Any",
+        "description": "report of Opportunity Status"
+    }
+]
