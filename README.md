@@ -4,6 +4,8 @@
 
     using python run the command - pip install pandas
 
+    pip install requests
+
 # Run   
 
     python diff.py

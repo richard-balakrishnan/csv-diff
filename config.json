@@ -1,0 +1,4 @@
+[{
+    "api" : "https://sateam.boldreports.com/reporting/api/site/main/v1.0/reports/{{report_name}}/CSV/export-filter",
+    "bearer_token" : "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpY2hhcmQuYmFsYWtyaXNobmFuQHN5bmNmdXNpb24uY29tIiwibmFtZWlkIjoiNDgiLCJ1bmlxdWVfbmFtZSI6IjhkZjExZjI4LTBiMzItNGViMi1iMmI5LTFkZDcxZGJjMjE4OSIsIklQIjoiMTU5Ljg5LjIzNy42NyIsImlzc3VlZF9kYXRlIjoiMTY2NDk4MTg5MiIsIm5iZiI6MTY2NDk4MTg5MiwiZXhwIjoxNjY4ODY5ODkyLCJpYXQiOjE2NjQ5ODE4OTIsImlzcyI6Imh0dHBzOi8vc2F0ZWFtLmJvbGRyZXBvcnRzLmNvbS9yZXBvcnRpbmcvc2l0ZS9tYWluIiwiYXVkIjoiaHR0cHM6Ly9zYXRlYW0uYm9sZHJlcG9ydHMuY29tL3JlcG9ydGluZy9zaXRlL21haW4ifQ.ddHIQ24dp89Ds5rrMBIJPsOgQn6nLJl7bGu7UGq1bPs"
+}]
