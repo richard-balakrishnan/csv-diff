@@ -2,6 +2,10 @@ import json
 import os
 import requests
 from base64 import b64decode
+from colorama import init
+from termcolor import colored
+# use Colorama to make Termcolor work on Windows
+init()
 config_JSON = json.load(open('config.json'))
 
 # path - path or directory
@@ -30,3 +34,37 @@ def write_base64_to_csv(base64, write_path):
     file = open(write_path, 'wb')
     file.write(base64_decode)
     file.close()
+
+def validate_column(expected_file, actual_file):
+    print("!!!.........Starting validating column............!!!")
+    # check the column size are equal
+    if (expected_file.columns.size != actual_file.columns.size):
+        print(colored("column are not equal", 'red'))    
+    # check the column names are equal
+    min_index = expected_file.columns.size - 1
+    if(expected_file.columns.size > actual_file.columns.size):
+        min_index = actual_file.columns.size - 1
+    for index, item in enumerate(expected_file.columns.to_list()):
+        if(index <= min_index):
+            if(expected_file.columns.values[index] != actual_file.columns.values[index]):
+                print(colored("column not available :" + expected_file.columns.values[index], 'red'))
+    print("!!!.........Finished validating column............!!!")
+
+def validate_row(expected_file, actual_file):
+    print("!!!.........Starting validating row............!!!")
+    # check the row length are equal
+    if(len(expected_file) != len(actual_file)):
+        print(colored("row length are not equal", 'red'))
+    print("!!!.........Finished validating row............!!!")
+
+def validate_data_types(expected_file, actual_file):
+    print("!!!.........Starting validating datatypes of column............!!!")
+    min_index = expected_file.columns.size - 1
+    if(expected_file.columns.size > actual_file.columns.size):
+        min_index = actual_file.columns.size - 1
+    for index, item in enumerate(expected_file.columns.to_list()):
+        if(index <= min_index):
+            if(expected_file.dtypes[expected_file.columns.values[index]].name != actual_file.dtypes[actual_file.columns.values[index]].name):
+                print(colored("Expected csv column: "+ expected_file.columns.values[index] + "datatype: " + expected_file.dtypes[expected_file.columns.values[index]].name, 'red'))
+                print(colored("Actual csv column: "+ actual_file.columns.values[index] + "datatype: " + actual_file.dtypes[actual_file.columns.values[index]].name, 'red'))
+    print("!!!.........Finished validating datatypes of column............!!!")
