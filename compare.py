@@ -6,15 +6,12 @@ eg: python compare.py //all file
 import argparse
 import json
 import os
-import sys
 from turtle import color
 import pandas as pd
 from helper import *
-# get the current working dir
 cwd = os.getcwd()
 from colorama import init
 from termcolor import colored
-# use Colorama to make Termcolor work on Windows too
 init()
 parser = argparse.ArgumentParser(description="Provide JSON file as input to compare CSV")
 parser.add_argument("-r","--report", type=str, default="*", metavar="" ,help="Provide --report=reports-data/{{dynamic}}.json")
@@ -36,6 +33,7 @@ for report in reports_JSON:
                 expected_file_path = cwd + data['path']
                 actual_file_path = cwd + data['path'].replace('\\expected\\','\\actual\\')
                 diff_file_path = cwd + data['path'].replace('\\expected\\','\\diff\\')
+                print(colored("Description : " + data['description'], 'magenta'))
                 print(colored("## Expected path: " + expected_file_path, 'yellow'))
                 print(colored("## Actual path: " + actual_file_path, 'yellow'))
                 print(colored("## Diff path: " + diff_file_path, 'yellow'))
@@ -55,14 +53,7 @@ for report in reports_JSON:
                         validate_column(expected_file, actual_file)
                         validate_row(expected_file, actual_file)
                         validate_data_types(expected_file, actual_file)
-                        print("!!!.........Starting comparing csv files............!!!")
-                        try:
-                            diff = expected_file.compare(actual_file)
-                            print(diff)
-                            diff.to_csv(diff_file_path)     
-                        except ValueError as e:
-                            print(colored("Failed to compare : " + str(e), 'red'))   
-                        print("!!!.........Finished comparing csv files............!!!")
+                        write_diff(expected_file, actual_file, diff_file_path)
                 else:
                         print("!!!.........Failed receiving data............!!!")
                         print(colored("Description : " + data['description'], 'red'))

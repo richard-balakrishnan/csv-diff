@@ -68,3 +68,13 @@ def validate_data_types(expected_file, actual_file):
                 print(colored("Expected csv column: "+ expected_file.columns.values[index] + "datatype: " + expected_file.dtypes[expected_file.columns.values[index]].name, 'red'))
                 print(colored("Actual csv column: "+ actual_file.columns.values[index] + "datatype: " + actual_file.dtypes[actual_file.columns.values[index]].name, 'red'))
     print("!!!.........Finished validating datatypes of column............!!!")
+
+def write_diff(expected_file, actual_file, diff_file_path):
+    print("!!!.........Starting comparing csv files............!!!")
+    try:
+        diff = expected_file.compare(actual_file)
+        print(diff)
+        diff.to_csv(diff_file_path)     
+    except ValueError as e:
+        print(colored("Failed to compare : " + str(e), 'red'))   
+    print("!!!.........Finished comparing csv files............!!!")
