@@ -72,6 +72,8 @@ def validate_data_types(expected_file, actual_file):
 def write_diff(expected_file, actual_file, diff_file_path):
     print("!!!.........Starting comparing csv files............!!!")
     try:
+        expected_file = expected_file.sort_index(axis = 1)
+        actual_file = actual_file.sort_index(axis = 1)
         diff = expected_file.compare(actual_file)
         print(diff)
         diff.to_csv(diff_file_path)     
