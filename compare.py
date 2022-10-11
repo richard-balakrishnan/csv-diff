@@ -28,6 +28,7 @@ for report in reports_JSON:
     if (os.path.exists(report)):
         data_JSON = json.load(open(report))
         root_path = "\\compare\\expected\\" + data_JSON['root_path'] + "\\"
+        report_id = data_JSON['report_id'] 
         data_JSON = data_JSON['reports']
         if(len(data_JSON) > 0):
             for data in data_JSON:
@@ -40,7 +41,7 @@ for report in reports_JSON:
                 print(colored("## Actual path: " + actual_file_path, 'yellow'))
                 print(colored("## Diff path: " + diff_file_path, 'yellow'))
                 # call api and save the file
-                info = postReq(data['report_id'], {"FilterParameters": repr(data['params'])})
+                info = postReq(report_id, {"FilterParameters": repr(data['params'])})
                 if(info.status_code == 200):
                     info_content = info.json()['FileContent']
                     write_base64_to_csv(info_content, actual_file_path)
