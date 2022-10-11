@@ -13,9 +13,11 @@ cwd = os.getcwd()
 from colorama import init
 from termcolor import colored
 init()
+# command prompt args start
 parser = argparse.ArgumentParser(description="Provide JSON file as input to compare CSV")
 parser.add_argument("-r","--report", type=str, default="*", metavar="" ,help="Provide --report=reports-data/{{dynamic}}.json")
 args = parser.parse_args()
+#command prompt args
 reports_JSON = []
 print(colored("Started using : " + args.report, 'green'))
 if (args.report != "*"):
@@ -25,7 +27,7 @@ if(args.report == "*"):
 for report in reports_JSON:
     if (os.path.exists(report)):
         data_JSON = json.load(open(report))
-        root_path = data_JSON['root_path']
+        root_path = "\\compare\\expected\\" + data_JSON['root_path'] + "\\"
         data_JSON = data_JSON['reports']
         if(len(data_JSON) > 0):
             for data in data_JSON:
@@ -38,7 +40,7 @@ for report in reports_JSON:
                 print(colored("## Actual path: " + actual_file_path, 'yellow'))
                 print(colored("## Diff path: " + diff_file_path, 'yellow'))
                 # call api and save the file
-                info = postReq(data['report_id'], data['params'])
+                info = postReq(data['report_id'], {"FilterParameters": repr(data['params'])})
                 if(info.status_code == 200):
                     info_content = info.json()['FileContent']
                     write_base64_to_csv(info_content, actual_file_path)
@@ -57,7 +59,7 @@ for report in reports_JSON:
                 else:
                         print("!!!.........Failed receiving data............!!!")
                         print(colored("Description : " + data['description'], 'red'))
-                        print(colored("Status Code : " + info.status_code, 'red'))
+                        print(colored("Status Code : " + str(info.status_code), 'red'))
                         print("!!!.........Failed receiving data............!!!")
     else:
         print(colored("The provided input : " + report + " does not exsist", 'red'))

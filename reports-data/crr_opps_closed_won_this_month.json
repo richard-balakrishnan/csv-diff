@@ -1,19 +1,18 @@
 {
-    "root_path": "\\compare\\expected\\crr_opps_closed_won_this_month\\",
+    "root_path": "crr_opps_closed_won_this_month",
     "reports": [
         {
             "path": "2021_Jan_close_date.csv",
             "report_id": "c84b204b-d072-4114-931a-c9776ff08752",
             "params": {
-                "FilterParameters": ""
+                "SalesOrderNumber" : ["SO50754"]
             },
             "description": "report of data between 2021 jan"
         },
         {
             "path": "2021_feb_close_date.csv",
             "report_id": "7c59feb0-cb64-4c7a-b288-af059216f447",
-            "params": {
-                "FilterParameters": ""
+            "params": {   
             },
             "description": "report of data between 2021 feb"
         },
@@ -21,7 +20,6 @@
             "path": "2021_mar_close_date.csv",
             "report_id": "7c59feb0-cb64-4c7a-b288-af059216f447",
             "params": {
-                "FilterParameters": ""
             },
             "description": "report of data between 2021 mar"
         },
@@ -29,7 +27,6 @@
             "path": "2021_apr_close_date.csv",
             "report_id": "7c59feb0-cb64-4c7a-b288-af059216f447",
             "params": {
-                "FilterParameters": ""
             },
             "description": "report of data between 2021 apr"
         },
@@ -37,7 +34,6 @@
             "path": "2021_may_close_date.csv",
             "report_id": "7c59feb0-cb64-4c7a-b288-af059216f447",
             "params": {
-                "FilterParameters": ""
             },
             "description": "report of data between 2021 may"
         },
@@ -45,7 +41,6 @@
             "path": "2021_jun_close_date.csv",
             "report_id": "7c59feb0-cb64-4c7a-b288-af059216f447",
             "params": {
-                "FilterParameters": ""
             },
             "description": "report of data between 2021 jun"
         }
