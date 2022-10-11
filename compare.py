@@ -31,10 +31,10 @@ for report in reports_JSON:
         data_JSON = data_JSON['reports']
         if(len(data_JSON) > 0):
             for data in data_JSON:
-                data['path'] = root_path + data['path']
-                expected_file_path = cwd + data['path']
-                actual_file_path = cwd + data['path'].replace('\\expected\\','\\actual\\')
-                diff_file_path = cwd + data['path'].replace('\\expected\\','\\diff\\')
+                data['name'] = root_path + data['name']
+                expected_file_path = cwd + data['name']
+                actual_file_path = cwd + data['name'].replace('\\expected\\','\\actual\\')
+                diff_file_path = cwd + data['name'].replace('\\expected\\','\\diff\\')
                 print(colored("Description : " + data['description'], 'magenta'))
                 print(colored("## Expected path: " + expected_file_path, 'yellow'))
                 print(colored("## Actual path: " + actual_file_path, 'yellow'))
@@ -45,7 +45,7 @@ for report in reports_JSON:
                     info_content = info.json()['FileContent']
                     write_base64_to_csv(info_content, actual_file_path)
                     # check the csv file is exsist in expected and actual path
-                    if(os.path.exists(expected_file_path) and os.path.exists(cwd + data['path'].replace('\\expected\\','\\actual\\'))):
+                    if(os.path.exists(expected_file_path) and os.path.exists(cwd + data['name'].replace('\\expected\\','\\actual\\'))):
                         # if the diff file path not exsist create one
                         if not(os.path.exists(os.path.dirname(diff_file_path))):
                             os.makedirs(os.path.dirname(diff_file_path))
