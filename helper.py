@@ -127,7 +127,7 @@ def gen_html_report(info, path):
         <button class="sf_accordion"> {{name}} </button>
         <div class="sf_panel">
         <h2>Description : {{description}} </h2>
-        <h2>API state : {{api_state}}</h2>
+        <h2>Export API : {{api_state}}</h2>
         <div id="sf_content">
         <h3>Column validation: </h3>
         <h4>Size of expected and actual column are : {{column_size}}</h4>
@@ -151,8 +151,7 @@ def gen_html_report(info, path):
         <p>Row length are {{row_size}}</p>
         <h3>Comparision diff:</h3>
         {{diff_html}}
-        <h3>Error : </h3>
-        <h4>{{error}}</h4>
+        <h3>Error : <span class="red">{{error}}</span></h3>
         </div>
         <hr>
         </div>"""
@@ -165,19 +164,19 @@ def gen_html_report(info, path):
     # re.sub("{{description}}", info[0]['description'], data)
     for data in info:
         if (data["api_state"] == False):
-            data["api_state"] = "FAILED"
+            data["api_state"] = "<span class='red'>FAILED</span>"
         else:
-            data["api_state"] = "SUCCESS"
+            data["api_state"] = "<span class='green'>SUCCESS</span>"
         
         if(data["column_size"] == False):
-            data["column_size"] = "NOT EQUAL"
+            data["column_size"] = "<span class='red'>NOT EQUAL</span>"
         else:
-            data["column_size"] = "EQUAL"
+            data["column_size"] = "<span class='green'>EQUAL</span>"
 
         if(data["row_size"] == False):
-            data["row_size"] = "NOT EQUAL"
+            data["row_size"] = "<span class='red'>NOT EQUAL</span>"
         else:
-            data["row_size"] = "EQUAL"
+            data["row_size"] = "<span class='green'>EQUAL</span>"
 
         replace_data = re.sub("{{description}}", data["description"], template)
         replace_data = re.sub("{{name}}", data["name"], replace_data)
