@@ -147,8 +147,8 @@ def gen_html_report(info, path):
           {{column_type}}
         </tr>
         </table>
-        <h3>Row validation: </h3>
-        <p>Row length are {{row_size}}</p>
+        <h3>Row validation:</h3>
+        <h4> Row length are : {{row_size}}</h4>
         <h3>Comparision diff:</h3>
         {{diff_html}}
         <h3>Error : <span class="red">{{error}}</span></h3>
