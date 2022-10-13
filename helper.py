@@ -107,11 +107,13 @@ def validate_data_types(expected_file, actual_file):
 def write_diff(expected_file, actual_file, diff_file_path):
     error = ""
     diff_html = ""
+    diff_len = ""
     print("!!!.........Starting comparing csv files............!!!")
     try:
         expected_file = expected_file.sort_index(axis=1)
         actual_file = actual_file.sort_index(axis=1)
         diff = expected_file.compare(actual_file)
+        diff_len = str(len(diff))
         print(diff)
         diff.to_csv(diff_file_path)
         diff_html = diff.to_html()
@@ -119,7 +121,7 @@ def write_diff(expected_file, actual_file, diff_file_path):
         error = str(e)
         print(colored("Failed to compare : " + str(e), 'red'))
     print("!!!.........Finished comparing csv files............!!!")
-    return ({"error": error, "diff_html": diff_html})
+    return ({"error": error, "diff_html": diff_html, "diff_len" : diff_len})
 
 
 def gen_html_report(info, path):
@@ -179,7 +181,7 @@ def gen_html_report(info, path):
             data["row_size"] = "<span class='green'>EQUAL</span>"
 
         replace_data = re.sub("{{description}}", data["description"], template)
-        replace_data = re.sub("{{name}}", data["name"] + " ( " + "CSV Export: " + data["api_state"] + ", Column name mismatch : " + str(len(data["column_name"])) + " ,Values mismatch : " + str(len(data["column_type"])) + " )", replace_data)
+        replace_data = re.sub("{{name}}", data["name"] + " ( " + "CSV Export: " + data["api_state"] + ", Column name mismatch : " + str(len(data["column_name"])) + " ,Values mismatch : " + data["diff_len"] + " )", replace_data)
         replace_data = re.sub("{{api_state}}", data["api_state"] , replace_data)
         replace_data = re.sub("{{column_size}}", data["column_size"] , replace_data)
         replace_data = re.sub("{{row_size}}", data["row_size"], replace_data)

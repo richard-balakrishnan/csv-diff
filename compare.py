@@ -69,6 +69,7 @@ for report in reports_JSON:
                         error_model['row_size'] = row_valid
                         error_model['error'] = compare_file['error']
                         error_model['diff_html'] = compare_file['diff_html']
+                        error_model['diff_len'] = compare_file['diff_len']
                         error_model['column_type'] = col_dtype
                         error_obj.append(error_model)
                         error_model = {}
