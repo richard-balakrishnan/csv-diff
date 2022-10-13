@@ -78,6 +78,8 @@ def validate_row(expected_file, actual_file):
 
 
 def validate_data_types(expected_file, actual_file):
+    expected_file = expected_file.sort_index(axis=1)
+    actual_file = actual_file.sort_index(axis=1)
     data_format = {
     }
     collection = []
