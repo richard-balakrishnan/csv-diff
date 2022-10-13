@@ -128,7 +128,7 @@ def gen_html_report(info, path):
         <h2>API state : {{api_state}}</h2>
         <div id="sf_content">
         <h3>Column validation: </h3>
-        <h4>Size of expected column and actual are : {{column_size}}</h4>
+        <h4>Size of expected and actual column are : {{column_size}}</h4>
         <h4>The below columns are not available in compared file</h4>
         <ol>
         {{column_name}}
