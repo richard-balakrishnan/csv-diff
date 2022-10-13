@@ -193,7 +193,6 @@ def gen_html_report(info, path):
         col_not_avail_template = ""
     
         col_dtype_mismatch_template = ""
-        print(data["column_type"])
         for col_name in data["column_type"]:
             col_dtype_mismatch_template = "<tr>" + col_dtype_mismatch_template + "<td>" + col_name["expected"] + "</td>" + "<td>" + col_name["actual"] + "</td>" + "<td>" + col_name["expected_type"] + "</td>" + "<td>" + col_name["actual_type"] + "</td>" + "</tr>" 
         replace_data = re.sub("{{column_type}}", col_dtype_mismatch_template, replace_data)
@@ -202,7 +201,7 @@ def gen_html_report(info, path):
         formed_template = formed_template + replace_data
     
     formed_template = re.sub("{{template}}", formed_template ,template_str)
-    print("Report\\"+pathlib.PurePath(path).name)
+    print("Report generated path : "+"Report\\"+pathlib.PurePath(path).name+".html")
     if not(os.path.exists("Report")):
         os.makedirs("Report")
     html_file = open("Report\\"+pathlib.PurePath(path).name+".html", "w")
