@@ -179,7 +179,7 @@ def gen_html_report(info, path):
             data["row_size"] = "<span class='green'>EQUAL</span>"
 
         replace_data = re.sub("{{description}}", data["description"], template)
-        replace_data = re.sub("{{name}}", data["name"], replace_data)
+        replace_data = re.sub("{{name}}", data["name"] + " ( " + "CSV Export: " + data["api_state"] + ", Column name mismatch : " + str(len(data["column_name"])) + " ,Values mismatch : " + str(len(data["column_type"])) + " )", replace_data)
         replace_data = re.sub("{{api_state}}", data["api_state"] , replace_data)
         replace_data = re.sub("{{column_size}}", data["column_size"] , replace_data)
         replace_data = re.sub("{{row_size}}", data["row_size"], replace_data)
