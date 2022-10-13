@@ -137,18 +137,6 @@ def gen_html_report(info, path):
         <ol>
         {{column_name}}
         </ol>
-        <h4>The below datatypes mismatch</h4>
-        <table>
-        <tr>
-          <th>Expected column name</th>
-          <th>Actual column name</th>
-          <th>Expected datatype</th>
-          <th>Actual datatype</th>
-        </tr>
-        <tr>
-          {{column_type}}
-        </tr>
-        </table>
         <h3>Row validation:</h3>
         <h4> Row length are : {{row_size}}</h4>
         <h3>Comparision diff:</h3>
@@ -181,7 +169,7 @@ def gen_html_report(info, path):
             data["row_size"] = "<span class='green'>EQUAL</span>"
 
         replace_data = re.sub("{{description}}", data["description"], template)
-        replace_data = re.sub("{{name}}", data["name"] + " ( " + "CSV Export: " + data["api_state"] + ", Column name mismatch : " + str(len(data["column_name"])) + " ,Values mismatch : " + data["diff_len"] + " )", replace_data)
+        replace_data = re.sub("{{name}}", data["name"] + " ( " + "CSV Export: " + data["api_state"] + ", Column name mismatch : <span class='red'>" + str(len(data["column_name"])) + "</span>" +" ,Values mismatch : " + "<span class='red'>" + data["diff_len"] + "</span> )", replace_data)
         replace_data = re.sub("{{api_state}}", data["api_state"] , replace_data)
         replace_data = re.sub("{{column_size}}", data["column_size"] , replace_data)
         replace_data = re.sub("{{row_size}}", data["row_size"], replace_data)

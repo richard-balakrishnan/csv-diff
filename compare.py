@@ -58,8 +58,8 @@ for report in reports_JSON:
                         if not(os.path.exists(os.path.dirname(diff_file_path))):
                             os.makedirs(os.path.dirname(diff_file_path))
                         # read the csv file
-                        expected_file = pd.read_csv( expected_file_path, encoding="utf-8")
-                        actual_file = pd.read_csv( actual_file_path, encoding="utf-8")
+                        expected_file = pd.read_csv( expected_file_path, encoding="utf-8", dtype=str)
+                        actual_file = pd.read_csv( actual_file_path, encoding="utf-8", dtype=str)
                         col_valid = validate_column(expected_file, actual_file)
                         row_valid = validate_row(expected_file, actual_file)
                         col_dtype = validate_data_types(expected_file, actual_file)
