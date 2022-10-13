@@ -1,11 +1,19 @@
 {
     "root_path": "crr_opps_closed_won_this_month",
-    "report_id": "c84b204b-d072-4114-931a-c9776ff08752",
+    "report_id": "b130ad32-6c56-4838-9778-19953dbb0465",
     "reports": [
         {
             "name": "2021_Jan_close_date.csv",
             "params": {
-                "SalesOrderNumber" : ["SO50754"]
+                "ShowMe" : ["ALL Opportunities"],
+                "StartDate" : ["9/28/2022"],
+                "EndDate" : ["9/29/2022"],
+                "OpportunityStatus" : ["Closed Won"],
+                "OpportunityOwnerManager" : ["Thomas Philip"],
+                "RowCounts" : ["true"],
+                "DetailRows" : ["true"],
+                "Subtotals" : ["true"],
+                "GrandTotal" : ["true"]
             },
             "description": "report of data between 2021 jan"
         },
@@ -14,30 +22,6 @@
             "params": {   
             },
             "description": "report of data between 2021 feb"
-        },
-        {
-            "name": "2021_mar_close_date.csv",
-            "params": {
-            },
-            "description": "report of data between 2021 mar"
-        },
-        {
-            "name": "2021_apr_close_date.csv",
-            "params": {
-            },
-            "description": "report of data between 2021 apr"
-        },
-        {
-            "name": "2021_may_close_date.csv",
-            "params": {
-            },
-            "description": "report of data between 2021 may"
-        },
-        {
-            "name": "2021_jun_close_date.csv",
-            "params": {
-            },
-            "description": "report of data between 2021 jun"
         }
     ]
 }

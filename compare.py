@@ -6,13 +6,17 @@ eg: python compare.py //all file
 import argparse
 import json
 import os
-from turtle import color
 import pandas as pd
 from helper import *
 cwd = os.getcwd()
 from colorama import init
 from termcolor import colored
 init()
+
+error_model = {
+}
+error_obj = []
+
 # command prompt args start
 parser = argparse.ArgumentParser(description="Provide JSON file as input to compare CSV")
 parser.add_argument("-r","--report", type=str, default="*", metavar="" ,help="Provide --report=reports-data/{{dynamic}}.json")
@@ -32,6 +36,8 @@ for report in reports_JSON:
         data_JSON = data_JSON['reports']
         if(len(data_JSON) > 0):
             for data in data_JSON:
+                error_model['name'] = data['name']
+                error_model['description'] = data['description']
                 data['name'] = root_path + data['name']
                 expected_file_path = cwd + data['name']
                 actual_file_path = cwd + data['name'].replace('\\expected\\','\\actual\\')
@@ -43,6 +49,7 @@ for report in reports_JSON:
                 # call api and save the file
                 info = postReq(report_id, {"FilterParameters": repr(data['params'])})
                 if(info.status_code == 200):
+                    error_model['api_state'] = True
                     info_content = info.json()['FileContent']
                     write_base64_to_csv(info_content, actual_file_path)
                     # check the csv file is exsist in expected and actual path
@@ -53,14 +60,25 @@ for report in reports_JSON:
                         # read the csv file
                         expected_file = pd.read_csv( expected_file_path, encoding="utf-8")
                         actual_file = pd.read_csv( actual_file_path, encoding="utf-8")
-                        validate_column(expected_file, actual_file)
-                        validate_row(expected_file, actual_file)
-                        validate_data_types(expected_file, actual_file)
-                        write_diff(expected_file, actual_file, diff_file_path)
+                        col_valid = validate_column(expected_file, actual_file)
+                        row_valid = validate_row(expected_file, actual_file)
+                        col_dtype = validate_data_types(expected_file, actual_file)
+                        compare_file = write_diff(expected_file, actual_file, diff_file_path)
+                        error_model['column_size'] = col_valid['column_size']
+                        error_model['column_name'] = col_valid['column_name']
+                        error_model['row_size'] = row_valid
+                        error_model['error'] = compare_file['error']
+                        error_model['diff_html'] = compare_file['diff_html']
+                        error_model['column_type'] = col_dtype
+                        error_obj.append(error_model)
+                        error_model = {}
                 else:
                         print("!!!.........Failed receiving data............!!!")
                         print(colored("Description : " + data['description'], 'red'))
                         print(colored("Status Code : " + str(info.status_code), 'red'))
                         print("!!!.........Failed receiving data............!!!")
+            # write into html for every json completion
+            gen_html_report(error_obj, root_path)
+            error_obj = []
     else:
         print(colored("The provided input : " + report + " does not exsist", 'red'))

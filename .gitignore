@@ -2,3 +2,4 @@ compare/actual/**/*.csv
 compare/diff/**/*.csv
 __pycache__
 .vscode
+Report
