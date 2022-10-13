@@ -129,7 +129,7 @@ def gen_html_report(info, path):
         <button class="sf_accordion"> {{name}} </button>
         <div class="sf_panel">
         <h2>Description : {{description}} </h2>
-        <h2>Export API : {{api_state}}</h2>
+        <h3>Export API : {{api_state}}</h3>
         <div id="sf_content">
         <h3>Column validation: </h3>
         <h4>Size of expected and actual column are : {{column_size}}</h4>
