@@ -1,6 +1,6 @@
 {
     "root_path": "thomas_nlr_team_quota",
-    "report_id": "f8a23f49-2c56-4e9e-af99-16d879dd82c7",
+    "report_id": "291c5ea6-d4bb-458b-a1ad-38591ba65c7b",
     "reports": [
         {
             "name": "2020_jan_apr_thomas_nlr_team_team_quota.csv",
@@ -19,7 +19,7 @@
             "description": "report of data between jan to apr 2020"
         },
         {
-            "name": "2020_may_aug_thomas_nlr_team_team_quota.csv.csv",
+            "name": "2020_may_aug_thomas_nlr_team_team_quota.csv",
             "params": {
                 "ShowMe" : ["ALL Opportunities"],
                 "StartDate" : ["5/1/2020"],
@@ -35,7 +35,7 @@
             "description": "report of data between may to aug 2020"
         },
         {
-            "name": "2020_sep_dec_thomas_nlr_team_team_quota.csv.csv",
+            "name": "2020_sep_dec_thomas_nlr_team_team_quota.csv",
             "params": {
                 "ShowMe" : ["ALL Opportunities"],
                 "StartDate" : ["9/1/2020"],
@@ -67,7 +67,7 @@
             "description": "report of data between jan to apr 2021"
         },
         {
-            "name": "2021_may_aug_thomas_nlr_team_team_quota.csv.csv",
+            "name": "2021_may_aug_thomas_nlr_team_team_quota.csv",
             "params": {
                 "ShowMe" : ["ALL Opportunities"],
                 "StartDate" : ["5/1/2021"],
@@ -83,7 +83,7 @@
             "description": "report of data between may to aug 2020"
         },
         {
-            "name": "2021_sep_dec_thomas_nlr_team_team_quota.csv.csv",
+            "name": "2021_sep_dec_thomas_nlr_team_team_quota.csv",
             "params": {
                 "ShowMe" : ["ALL Opportunities"],
                 "StartDate" : ["9/1/2021"],
