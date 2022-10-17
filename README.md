@@ -5,6 +5,7 @@
     using python run the below commands - 
     * pip install pandas
     * pip install requests
+    * pip install termcolor
     * pip install colorama
 
 # Run   
